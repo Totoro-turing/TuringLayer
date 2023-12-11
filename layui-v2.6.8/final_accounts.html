@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>决算单</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+</head>
+<body>
+<form class="layui-form layui-form-pane" action="">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">几号塔机</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" required  lay-verify="required" placeholder="塔基编号" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <div class="layui-btn-container">
+                <button type="button" class="layui-btn layui-btn-warm">添加塔机</button>
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">租赁费</label>
+            <div class="layui-input-inline">
+                <input type="tel" name="phone" lay-verify="required|phone" placeholder="单价/月" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">日期范围</label>
+            <div class="layui-inline" id="rent-range">
+                <div class="layui-input-inline">
+                    <input type="text" id="startDate" class="layui-input" placeholder="开始日期">
+                </div>
+                <div class="layui-form-mid">-</div>
+                <div class="layui-input-inline">
+                    <input type="text" id="endDate" class="layui-input" placeholder="结束日期">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">司机</label>
+            <div class="layui-input-inline">
+                <input type="tel" name="phone" lay-verify="required|phone" placeholder="几个司机" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">指挥</label>
+            <div class="layui-input-inline">
+                <input type="text" name="email" lay-verify="email" placeholder="几个指挥" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">人工费</label>
+            <div class="layui-input-inline">
+                <input type="text" name="email" lay-verify="email" placeholder="单价/月" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">日期范围</label>
+            <div class="layui-inline" id="work-range">
+                <div class="layui-input-inline">
+                    <input type="text" id="work-startDate" class="layui-input" placeholder="开始日期">
+                </div>
+                <div class="layui-form-mid">-</div>
+                <div class="layui-input-inline">
+                    <input type="text" id="work-endDate" class="layui-input" placeholder="结束日期">
+                </div>
+            </div>
+        </div>
+        <div class="layui-inline">
+            <div class="layui-btn-container">
+                <button class="layui-btn layui-btn-primary layui-border-orange">添加工作时间</button>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="layui/layui.js"></script>
+<script>
+    laydate = layui.laydate
+    laydate.render({
+        elem: '#rent-range' //开始时间和结束时间所在 input 框的父选择器
+        //设置开始日期、日期日期的 input 选择器
+        ,range: ['#startDate', '#endDate'] //数组格式为 layui 2.6.6 开始新增
+    });
+    laydate.render({
+        elem: '#work-range' //开始时间和结束时间所在 input 框的父选择器
+        //设置开始日期、日期日期的 input 选择器
+        ,range: ['#work-startDate', '#work-endDate'] //数组格式为 layui 2.6.6 开始新增
+    });
+</script>
+</body>
+</html>
