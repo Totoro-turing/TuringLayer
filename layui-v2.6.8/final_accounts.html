@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="layui/css/layui.css">
 </head>
 <body>
-<form class="layui-form layui-form-pane" action="">
+<form class="layui-form layui-form-pane" action="" id="account_1">
     <div class="layui-form-item">
         <div class="layui-inline">
             <label class="layui-form-label">几号塔机</label>
@@ -20,11 +20,17 @@
             </div>
         </div>
     </div>
-    <div class="layui-form-item">
+    <div class="layui-form-item" id = "crane">
         <div class="layui-inline">
             <label class="layui-form-label">租赁费</label>
             <div class="layui-input-inline">
-                <input type="tel" name="phone" lay-verify="required|phone" placeholder="单价/月" class="layui-input">
+                <input type="tel" name="phone" lay-verify="required|phone" placeholder="单价/月" class="layui-input" value = 0>
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">进出场费</label>
+            <div class="layui-input-inline">
+                <input type="tel" name="phone" lay-verify="required|phone" placeholder="元" class="layui-input" value = 0>
             </div>
         </div>
         <div class="layui-inline">
@@ -39,58 +45,80 @@
                 </div>
             </div>
         </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">租赁费</label>
+            <div class="layui-input-inline">
+                <input type="text" name="email" lay-verify="email" placeholder="元" class="layui-input" value = 0>
+            </div>
+        </div>
     </div>
-    <div class="layui-form-item">
+    <div class="layui-form-item" id="employee_1">
         <div class="layui-inline">
             <label class="layui-form-label">司机</label>
             <div class="layui-input-inline">
-                <input type="tel" name="phone" lay-verify="required|phone" placeholder="几个司机" class="layui-input">
+                <input type="tel" name="phone" placeholder="几个司机" class="layui-input" value = 1>
             </div>
         </div>
         <div class="layui-inline">
             <label class="layui-form-label">指挥</label>
             <div class="layui-input-inline">
-                <input type="text" name="email" lay-verify="email" placeholder="几个指挥" class="layui-input">
+                <input type="text" name="email" placeholder="几个指挥" class="layui-input" value = 1>
             </div>
         </div>
         <div class="layui-inline">
             <label class="layui-form-label">人工费</label>
             <div class="layui-input-inline">
-                <input type="text" name="email" lay-verify="email" placeholder="单价/月" class="layui-input">
+                <input type="text" name="email" placeholder="单价/月" onkeyup="wages(this)" class="layui-input" value = 0>
             </div>
         </div>
         <div class="layui-inline">
-            <label class="layui-form-label">日期范围</label>
+            <label class="layui-form-label">工作时间</label>
             <div class="layui-inline" id="work-range">
                 <div class="layui-input-inline">
-                    <input type="text" id="work-startDate" class="layui-input" placeholder="开始日期">
+                    <input type="text"  id='work-startDate' class="layui-input" placeholder="开始日期">
                 </div>
                 <div class="layui-form-mid">-</div>
                 <div class="layui-input-inline">
-                    <input type="text" id="work-endDate" class="layui-input" placeholder="结束日期">
+                    <input type="text" id='work-endDate' class="layui-input" placeholder="结束日期">
                 </div>
             </div>
         </div>
         <div class="layui-inline">
+            <label class="layui-form-label">在职时长</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" value = "0月0天" readonly>
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">人工</label>
+            <div class="layui-input-inline">
+                <input type="text"  placeholder="元" class="layui-input layui-bg-blue"  readonly value = 0 onchange="refreshEmpolyeeMoney()">
+            </div>
+        </div>
+        <div class="layui-inline" id = 'add_work'>
             <div class="layui-btn-container">
                 <button class="layui-btn layui-btn-primary layui-border-orange">添加工作时间</button>
             </div>
         </div>
     </div>
 </form>
+<div class="layui-container">
+    <div class="layui-row">
+        <div class="layui-col-md6">
+            <label class="layui-form-label">租赁费：</label>
+            <div class="layui-input-inline">
+                <input type="text"  placeholder="元" class="layui-input layui-bg-green"  readonly value = 0>
+            </div>
+        </div>
+        <div class="layui-col-md6">
+            <label class="layui-form-label">人工费：</label>
+            <div class="layui-input-inline">
+                <input type="text"  placeholder="元" class="layui-input layui-bg-green"  readonly value = 0>
+            </div>
+        </div>
+    </div>
+</div>
 <script src="layui/layui.js"></script>
-<script>
-    laydate = layui.laydate
-    laydate.render({
-        elem: '#rent-range' //开始时间和结束时间所在 input 框的父选择器
-        //设置开始日期、日期日期的 input 选择器
-        ,range: ['#startDate', '#endDate'] //数组格式为 layui 2.6.6 开始新增
-    });
-    laydate.render({
-        elem: '#work-range' //开始时间和结束时间所在 input 框的父选择器
-        //设置开始日期、日期日期的 input 选择器
-        ,range: ['#work-startDate', '#work-endDate'] //数组格式为 layui 2.6.6 开始新增
-    });
-</script>
+<script src="js/account.js"></script>
 </body>
 </html>
